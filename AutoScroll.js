@@ -76,13 +76,13 @@ export default class AutoScroll extends Component {
 		// should do diff
 		if (h === this.contentHeight) return;
 		this.contentHeight = h;
-		// if (this.scrollHeight == null) {
-		// 	setTimeout(() => {
-		// 		this.scrollToBottomIfNecessary();
-		// 	}, 500);
-		// } else {
-		// 	this.scrollToBottomIfNecessary();
-		// }
+		if (this.scrollHeight == null) {
+			setTimeout(() => {
+				this.scrollToBottomIfNecessary();
+			}, 500);
+		} else {
+			this.scrollToBottomIfNecessary();
+		}
 	}
 
 	scrollToBottomIfNecessary() {
