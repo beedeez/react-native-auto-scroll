@@ -40,6 +40,11 @@ export default class AutoScroll extends Component {
 		this.keyboardDidHideListener.remove();
 	}
 
+	safeRefScrollTo(scrollParams) {
+		if (this.refs.scroller) {
+			this.refs.scroller.scrollTo(...scrollParams);
+		}
+	}
 	// todo: handle layout instead of keyboard
 	handleKeyboardShow() {
 		this.scrollToBottom();
@@ -52,14 +57,14 @@ export default class AutoScroll extends Component {
 			// fix top blank if exsits
 			// detection also has trouble on Android
 			if (scrollY > contentHeight - scrollHeight) {
-				this.refs.scroller.scrollTo({ y: 0 });
+				this.safeRefScrollTo({ y: 0 });
 			}
 			// fix bottom blank if exsits
 			// else {
 			//   this.scrollToBottom()
 			// }
 			else {
-				this.refs.scroller.scrollTo({ y: scrollY });
+				this.safeRefScrollTo({ y: scrollY });
 			}
 		}
 	}
@@ -95,7 +100,7 @@ export default class AutoScroll extends Component {
 			return;
 		}
 		if (contentHeight > scrollHeight) {
-			this.refs.scroller.scrollTo({ y: contentHeight - scrollHeight });
+			this.safeRefScrollTo({ y: contentHeight - scrollHeight });
 		}
 	}
 
