@@ -42,7 +42,7 @@ export default class AutoScroll extends Component {
 
 	safeRefScrollTo(scrollParams) {
 		if (this.refs.scroller) {
-			this.refs.scroller.scrollTo(...scrollParams);
+			this.refs.scroller.scrollTo(scrollParams);
 		}
 	}
 	// todo: handle layout instead of keyboard
